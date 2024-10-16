@@ -1,0 +1,87 @@
+.container {
+    background-color: yellow;
+
+    display: flex;
+    height: 100vh;
+
+ /* -------------------------------------------------------------------------- */
+ /*              DISPORRE GLI ELEMENTI SUL MAIN-AXIS (orizzontale)             */
+ /* -------------------------------------------------------------------------- */
+    /*proprietà di default:
+    justify-content: flex-start;
+    */
+
+    /*sposta alla fine del contenitore:
+    justify-content: flex-end;
+    */
+
+    /*sposta al centro:
+    justify-content: center;
+    */
+
+    /*distribuisci dall'inizio alla fine */
+
+    justify-content: space-between;
+
+    /*space-around e space-evenly distribuiscono lo spazio in maniere diverse */
+
+    /* -------------------------------------------------------------------------- */
+    /*              DISPORRE GLI ELEMENTI SUL CROSS-AXIS (verticale)              */
+    /* -------------------------------------------------------------------------- */
+    /*proprietà di default: 
+    align-items: stretch;
+    */
+
+    /*avere stretch come proprietà di default sull'asse verticale è utile perché facilita la creazione di colonne di altezza uguale */
+
+    /*
+
+    DISPONI IN ALTO O IN BASSO:
+    align-items: flex-start;
+    align-items: flex-end
+
+    */
+
+    /*per centrare:*/
+    align-items:center;
+    
+
+}
+
+.box {
+    background-color: fuchsia;
+    border: 1px solid black;
+    /*regola border: DIMENSIONI | TIPO | COLORE*/
+
+    /* height: 100px; */
+    width: 100px;   
+
+}
+
+/* -------------------------------------------------------------------------- */
+/*                   PROPRIETA DEI FIGLI DI UN ELEMENTO FLEX                  */
+/* -------------------------------------------------------------------------- */
+
+#box-1 {
+
+    /*ORDER: 0 è il default e appare nella sua posizione predefinita in base a dove viene trovato sul HTML */
+
+    /*ORDER > 0: sposta dopo la posizione di default*/
+    order: 1;
+
+}
+
+#box-3 {
+    order:2;
+}
+
+#box-4 {
+
+    /*ORDER < 0: sposta prima della posizione di default */
+    order:-1;
+}
+
+
+
+
+

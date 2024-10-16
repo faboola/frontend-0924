@@ -1,0 +1,40 @@
+/*modifico il box-model per evitare che il PADDING vada ad aumentare
+la dimensione totale dell'elemento. */
+
+* {
+    /* il selettore "*" seleziona TUTTI gli elementi */
+    box-sizing: border-box;
+    /*il valore di default del browser è content-box. Qua lo cambio in border-box*/
+}
+
+.container {
+    width: 80%;
+    margin:0 auto;
+    /*margine sopra e sotto a 0, margine sinistra e destra automatico */
+    background-color: #b1b1b1;
+
+    /*unità di misura fluida REM */
+    padding:1rem;
+    /*elementi a tutta altezza */
+    /* height:100vh; */
+     /*unità di misura relativa al VIEWPORT, cioè la finestra del browser */
+
+     height: 100%;
+
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: 2rem;
+    margin-bottom:1rem;
+}
+
+
+.box-a {
+    background-color: fuchsia;
+
+    width:200px;
+    height:200px;
+
+    /* padding:40px; */
+}

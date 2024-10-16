@@ -1,0 +1,138 @@
+
+
+/*Selettore BODY: agisce sul tag BODY che include tutta la pagina */
+
+body {
+
+    /*regola CSS composta da proprietà (background-color) e valore (fuchsia)*/
+    background-color:rgb(230, 230, 230);
+    color: #222222;
+
+    /*l'elenco dei caratteri è in ordine di preferenza. Chiude sempre con un'indicazione generica
+    della tipologia di font (es. sans-serif) come ultima risorsa*/
+
+    font-family: 'SF Pro', Arial, Helvetica, sans-serif;
+
+    margin:0; /*elimino il margine del body perché ho già un .container */
+    
+}
+
+.container {
+
+    width:1000px; /*width = larghezza */
+    /* margin-left: auto;
+    margin-right: auto; */
+
+    margin: auto; /*tutti i lati con margin auto*/
+    margin: 0 auto; /*sopra + sotto: 0px | sinistra + destra: auto */
+    /*equivale a : margin-top:0; margin-bottom: 0; margin-left:auto; margin-right:auto;*/
+
+    /* margin: 10px 40px 100px 80px; */
+    /* SOPRA | DESTRA | SOTTO | SINISTRA */
+
+    background: #ffffff;
+    padding:16px;
+}
+
+
+
+a {
+    color:#dd5500;
+}
+
+h1 {
+    /*selettore che agisce su tutti gli H1 */
+    font-size: 48px; /*NOTA: le unità di misura sono sempre subito dopo il valore (no spazi)*/
+    font-weight: 900;
+    /*per definire i gradi di spessore posso usare normal, bold, bolder oppure i numeri*/
+    /*400: normal | 700: bold | 800: bolder (extra bold) | 900: black*/
+    
+}   
+
+h2, h3 {
+
+    /* con questo selettore accorpo tutti gli H2 e H3 e gli dò le stesse regole */
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+h2 {    
+    /* ho già definito regole per H2, ma posso aggiungerne altre con altri selettori */    
+    border-bottom: 1px solid #888888;
+    /*bordo: spessore - tipo - colore */ 
+    
+    font-size: 28px;
+    
+}
+
+h3 {
+     border-left: 8px solid #ffaa00;
+    /*bordo:    spessore - tipo - colore */
+    padding-left: 8px;
+    color:#444444;
+    font-style: italic;
+}
+
+blockquote {
+    font-size: 24px;
+    color:#888888;
+    font-style: italic;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+blockquote cite {
+    display: block;
+
+    /*su richiesta di Pietro: per allineare a dx il "cite" dobbiamo prima
+    trasformarlo in un elemento BLOCK. Di base è un INLINE, quindi non supporta il text-align.
+    */
+
+    text-align: right;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /*per staccarlo un po' dalla citazione*/
+    margin-top: 16px;
+
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*             SELETTORE TIPO CLASSE (più specifico di quello TAG)            */
+/* -------------------------------------------------------------------------- */
+
+.intro {   
+    font-size: 18px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*              SELETTORE TIPO ID (più specifico di Classe e Tag)             */
+/* -------------------------------------------------------------------------- */
+
+/* #budapest {
+    color:green;
+} */
+
+
+/* -------------------------------------------------------------------------- */
+/*                 SELEZIONARE ELEMENTI DENTRO ALTRI ELEMENTI                 */
+/* -------------------------------------------------------------------------- */
+
+/*seleziona tutti gli <a> dentro <ol>*/
+
+/* ol a {
+    font-weight: bold;
+    text-decoration: none;
+} */
+
+/* se invece voglio applicare la regola SOLO all'intro: */
+
+.indice a {
+    text-decoration: none;
+    font-weight: bold;
+    /*text-decoration è sottolineato/sbarrato etc */
+    /*(in questo caso elimino il sottolineato di default dei link( */
+}
+/*NOTA: scrivendo .indice li a indico un selettore ancora più specifico */

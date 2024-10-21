@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Immagini e testo</title>
+        <link rel="stylesheet" href="normalize.css">
+
+        <style>
+
+            * {
+                box-sizing: border-box;
+            }
+
+            img {
+                /*rendiamo l'immagine un elemento BLOCCO per evitare margini anomali */
+                display: block;
+            }
+            
+
+            #blocchi {
+                /* background-color: rgb(177, 231, 193); */
+            }
+
+            /* a:hover {
+
+        color:fuchsia;
+    } */
+
+            .container {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .wrapper {
+
+                display: flex;
+                align-items: center;
+
+                /* Separa gli elementi sottostanti */
+                margin-bottom: 3rem;
+
+            }
+
+            /*selezioniamo solo i blocchi immagine dentro i .wrapper PARI */
+
+            .wrapper:nth-of-type(even) .blocco-immagine {
+                order: 1;
+
+            /*NOTA:
+           nth-of-type(even)    -> ELEMENTI PARI
+           nth-of-type(odd)     -> ELEMENTI DISPARI
+
+           (parte da 1!)
+
+           */
+            }
+
+            /* Diamo le dimensioni al blocco immagine e al blocco testo */
+
+            .blocco-immagine {
+                width: 33.333%;
+            }
+
+            .blocco-testo {
+                width: 66.666%;
+
+                /*margine interno*/
+                padding: 1rem;
+            }
+
+            .blocco-testo h2 {
+                /* Tolgo il margine a H2 per farlo centrare meglio in verticale */
+                margin-top: 0;
+            }
+
+            .blocco-immagine img {
+
+                /*rendo fluida l'immagine per farla adattare al contenitore */
+                width: 100%;
+
+                /*NOTA:
+                max-width: adatta l'immagine ma non la allarga mai oltre la sua dimensione intrinseca
+
+                width: allarga l'immagine. Se necessario, la ingrandisce. Attenzione che se ingrandita troppo potrebbe perdere di definizione */
+                
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <!-- Questa è la sezione generica -->
+        <section id="blocchi">
+
+            <!-- Questo serve solo per i margini -->
+            <div class="container">
+
+                <!-- Questo è l'elemento a cui diamo display: flex -->
+                <div class="wrapper">
+
+                    <div class="blocco-immagine">
+                        <img src="https://picsum.photos/600/400?random=1" alt="">
+                    </div>
+
+                    <div class="blocco-testo">
+                        <h2>Lorem ipsum dolor sit.</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptatum
+                            aspernatur accusantium sapiente velit dicta facere voluptatem officiis nulla
+                            voluptas explicabo quos earum hic, corporis vero cupiditate, placeat deleniti.
+                            Sapiente iusto laboriosam iste quaerat est maxime. Recusandae, eveniet!
+                            Deserunt, aliquam.</p>
+
+                        <a href="#" class="button">Click me!</a>
+                    </div>
+
+                </div>
+
+                <!-- Questo è l'elemento a cui diamo display: flex -->
+                <div class="wrapper">
+
+                    <div class="blocco-immagine inverted">
+                        <img src="https://picsum.photos/600/400?random=2" alt="">
+                    </div>
+
+                    <div class="blocco-testo">
+                        <h2>Lorem ipsum dolor sit.</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptatum
+                            aspernatur accusantium sapiente velit dicta facere voluptatem officiis nulla
+                            voluptas explicabo quos earum hic, corporis vero cupiditate, placeat deleniti.
+                            Sapiente iusto laboriosam iste quaerat est maxime. Recusandae, eveniet!
+                            Deserunt, aliquam.</p>
+                        <a href="#" class="button">Click me!</a>
+                    </div>
+
+                </div>
+
+                <!-- Questo è l'elemento a cui diamo display: flex -->
+                <div class="wrapper">
+
+                    <div class="blocco-immagine">
+                        <img src="https://picsum.photos/600/400?random=3" alt="">
+                    </div>
+
+                    <div class="blocco-testo">
+                        <h2>Lorem ipsum dolor sit.</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptatum
+                            aspernatur accusantium sapiente velit dicta facere voluptatem officiis nulla
+                            voluptas explicabo quos earum hic, corporis vero cupiditate, placeat deleniti.
+                            Sapiente iusto laboriosam iste quaerat est maxime. Recusandae, eveniet!
+                            Deserunt, aliquam.</p>
+                        <a href="#" class="button">Click me!</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </body>
+</html>

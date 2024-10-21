@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section</title>
+
+    <link rel="stylesheet" href="normalize.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #hero {
+            background-image: url('images/sfondo.jpg');
+
+            /* alto come tutto il viewport */
+            height: 100vh;
+
+            /* impedisci la ripetizione tipo mattoncini dell'immagine */
+            background-repeat: no-repeat;
+
+            /* lo sfondo riempie tutto lo spazio */
+            background-size: cover;
+
+            /* posiziona lo sfondo al centro */
+            background-position: center center;
+
+            color:white;
+
+            /* posizioniamo gli elementi interni con Flexbox*/
+            display: flex;
+
+            /* centratura orizzontale */
+            justify-content: center;
+
+            /* centratura verticale */
+            align-items: center;
+        }
+
+        /* se voglio il testo allineato al centro: */
+        .hero-text {
+            text-align: center;
+        }
+
+        /*per ingrandire il testo */
+        .hero-text h1 {
+            font-size: 3.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.5rem;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+
+
+    <section id="hero">
+
+      <div class="hero-text">
+          <h1>Lorem, ipsum dolor.</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, velit.</p>
+      </div>
+
+    </section>
+
+
+</body>
+</html>

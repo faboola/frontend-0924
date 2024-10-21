@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Section</title>
+
+    <link rel="stylesheet" href="normalize.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .menu-wrapper {
+            /* affianco LOGO e MENU */
+            display: flex;
+            /* dispongo LOGO e menu agli estremi e allineo in verticale */
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 120px;
+        }
+
+       
+        .main-menu {
+            /*facciamo affiancare gli LI con display:flex sul genitore UL*/
+            display: flex;
+
+            /* eliminiamo i pallini */
+            list-style-type: none;
+
+            /*elimino il margine interno iniziale */
+            padding: 0;
+
+            gap: 1.5rem;
+
+            /*
+            GAP solo in orizzontale: column-gap
+            GAP solo in verticale: row-gap
+            GAP in verticale e orizzontale: gap
+            */
+        }
+
+        .main-menu li {
+            /*due valori - SOPRA+SOTTO | SINISTRA + DESTRA */
+            padding: 0.25rem 1rem;
+
+            /*uguale a scrivere:*/
+            /* padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            padding-left: 1rem;
+            padding-right: 1rem; */
+            border:1px solid #4477DD;
+
+            /*bordo arrotondato*/
+            border-radius: 50px;
+        }
+
+        .main-menu a {
+
+            /*elimino sottolineato*/
+            text-decoration: none;
+            color:#4477DD
+
+        }
+
+   
+        .main-menu li:hover {
+            background-color: #DD44FF
+        }
+
+        .main-menu li:hover a {
+            color:white;
+        }
+
+     
+
+
+    </style>
+
+
+</head>
+<body>
+    
+<header id="main-header">
+
+    <div class="container menu-wrapper">
+        
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <nav class="main-nav">
+            <ul class="main-menu">
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="pricing.html">PRICING</a></li>
+                <li><a href="demo.html">DEMO</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <!--
+            Scorciatoia-ninja per Emmet:
+            ul>(li>a)*5
+            -->
+        </nav>
+    </div>
+
+</header>
+
+</body>
+</html>

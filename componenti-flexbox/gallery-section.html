@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Section</title>
+
+    <link rel="stylesheet" href="normalize.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #gallery {
+            display: flex;
+            /*di default, flexbox non manda a capo. Per mandare a capo dobbiamo usare:*/
+            flex-wrap: wrap;
+
+            /*per ovviare alla disparità di margini tra inizio/fine e parte interna degli elementi,
+            possiamo applicare un margine negativo al genitore */
+
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+        }
+
+        .gallery-item {
+            width: 25%;
+            padding: 0.5rem;
+        }
+
+        .gallery-item img {
+            display: block;
+            max-width: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+    <section id="gallery">
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=1" alt="">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=2" alt="">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=3" alt="">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=4" alt="">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=5" alt="">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=6" alt="">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=7" alt="">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://picsum.photos/600/600?random=8" alt="">
+        </div>
+
+    </section>
+</body>
+</html>

@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color:#354E69;
+    font-family: "Poppins", sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* volendo posso creare una classe per rendere fluide alcune immagini */ 
+.img-fluid {
+    max-width: 100%;
+}
+
+/*CREO LE CLASSI "HELPER" */
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+a.read-more {
+    text-decoration: none;
+}
+
+/*STILI HEADER*/
+#main-header {
+    /*per fissare la barra in alto: */
+    position:sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    /* centratura verticale */
+    align-items: center;
+}
+
+.header-logo img {
+    width: 7rem
+}
+
+.main-menu ul { /*gli UL dentro main-menu */
+    /* Elimino i margini e padding dal menu */
+    
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+    list-style-type: none;
+
+    column-gap: 1.5rem;
+}
+
+.main-menu a { 
+    /*elimino il sottolineato dal link sulla header */
+    text-decoration: none;
+    color: #354E69;
+}
+
+/*STILI INTRO*/
+
+#intro {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+#intro p {
+    background-color:#efefef;
+    border-left: 0.5rem solid gold;
+    padding:1rem;
+    font-size: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                      STILI SERVIZI CON IMMAGINI SPLIT                      */
+/* -------------------------------------------------------------------------- */
+
+.serv-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.serv-image {
+    width: 25%;
+}
+
+.serv-text {
+    width: 75%;
+    padding: 2rem;
+}
+
+/*inverto l'ordine sugli elementi pari*/
+
+.serv-wrapper:nth-of-type(even) .serv-image {
+order:1;
+}
+
+.serv-wrapper:nth-of-type(even) .serv-text {
+    text-align: right;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                STILI GALLERY                               */
+/* -------------------------------------------------------------------------- */
+
+#gallery {
+    background-color: #9FACB9;
+    padding-bottom: 4rem;
+}
+
+.gallery-wrapper {
+    display: flex;
+    /*manda a capo quando esaurisci lo spazio*/
+    flex-wrap: wrap;
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.gallery-image {
+    width: 25%;
+    padding:1rem;
+}
+
+.gallery-title {
+    padding-top: 4rem;
+}
+
+.gallery-title h2 {
+    font-weight: 200;
+    margin-top: 0;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.75rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                STILI FOOTER                                */
+/* -------------------------------------------------------------------------- */
+
+#main-footer {
+    background-color: #243855;
+    color:#ffffff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+#main-footer a {
+    text-decoration: none;
+    color:  #FFF; /*nota: #FFF equivale a #FFFFFF perché le coppie di valori sono uguali      */
+}
+
+.footer-link svg {
+    width: 2rem;
+    height: auto;
+    fill:#fff; /*fill serve per riempire con un colore le forme SVG */
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-social {
+    /* i link sul blocco footer-social stanno comunque in linea, ma con flex ho più controllo sull'allineamento verticale */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-credits {
+    text-align: right;
+}

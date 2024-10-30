@@ -1,0 +1,62 @@
+body {
+    background-color: blue;
+    color:white;
+}
+
+
+/* MEDIA QUERY */
+
+@media screen and (min-width: 900px) {
+
+    /*una volta impostata la media query, scrivo le regole all'interno:*/
+
+    body {
+        background-color:fuchsia;
+    }    
+
+
+}
+
+/*regole per schermi più grandi*/
+@media screen and (min-width: 1200px) {
+
+    body {
+        background-color: rgb(179, 255, 0);
+    }
+
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            ESEMPIO DI MAX-WIDTH:                           */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (max-width:700px) { /*fino a 700px*/
+    h1 {
+        color: #FF9900;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                   INTERCETTARE L'ORIENTAMENTO DEL DEVICE                   */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (orientation: portrait) {
+    /*LANDSCAPE: orizzontale | PORTRAIT: verticale */
+
+    h1 {
+        text-transform: uppercase; /*tutto maiuscolo*/
+    }
+
+}
+
+/* -------------------------------------------------------------------------- */
+/*                          MEDIA QUERY PER LA STAMPA                         */
+/* -------------------------------------------------------------------------- */
+
+@media print {
+    body {
+        background-color: white;
+        color:black
+    }
+}
+

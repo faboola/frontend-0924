@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------------------- */
+/*          PRIMA LE REGOLE GENERICHE CHE VALGONO PER TUTTI I DEVICE          */
+/* -------------------------------------------------------------------------- */
+
+body {
+    font-family: 'DM Sans',sans-serif;
+    color: #222266;
+    background:#efeffa;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 92%;
+    margin: 0 auto;
+}
+
+
+.button {
+    background-color: #222266;
+    color: #efeffa;
+    text-decoration: none;
+
+    padding: 0.75rem 2rem; /*sopra + sotto | sx + dx */
+
+    border-radius:50px;
+}
+
+/* SEZIONE HERO */
+
+#hero {
+
+    height: 100vh; /*alto come tutto il viewport */
+
+    background-image: url('../images/hero-verticale.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center; /*questa proprietà viene ereditata anche da .hero-text */
+
+}
+
+.hero-text p{
+font-size: 2rem;
+}
+
+/* SEZIONE CARDS */
+
+#cards {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.card {
+    margin-bottom: 2rem;
+}
+
+.card-button {
+    padding-top: 1rem;
+}
+
+/* STILI GALLERY*/
+
+.gallery-image {
+    margin-bottom: 1rem;
+}
+
+/*footer*/
+
+#main-footer {
+    background-color: #474760;
+    color:#efeffa;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+}
+
+#main-footer a { /*tutti i link del footer */
+
+    color:#efeffa;
+    text-decoration: none;
+
+}
+
+.footer-info {
+    margin-bottom:1rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                            REGOLE DA 992px IN SU                           */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (min-width:992px) {
+
+    .container {
+        width: 86%;
+        /*margin: 0 auto non serve perché è ereditato dagli stili precedenti*/
+    }
+    
+    #hero {
+        background-image: url('../images/hero-orizzontale.jpg');
+        /*tutte le altre caratteristiche sono ereditate dagli stili prima della media query*/
+    }
+
+    /* ---- SEZIONE CARDS ---- */
+
+    .cards-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+
+    .card {
+        width: 25%;
+        padding:1rem;
+    }
+
+    /*sezione Gallery */
+
+    .gallery-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .gallery-image {
+        width: 33.33%;
+        padding:1rem;
+        margin-bottom: 0; /*annullo il margin impostato in precedenza */
+    }
+
+}
+
+/* -------------------------------------------------------------------------- */
+/*                       REGOLE PER SCHERMI OLTRE 1200PX                      */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (min-width:1200px) {
+
+    .card {
+        width: 20%;
+    }
+
+    .gallery-image {
+        width: 25%;
+    }
+    
+}

@@ -42,6 +42,16 @@ img {
     border-radius:50px;
 }
 
+/*SEZIONE HEADER */
+
+.main-menu {
+    display: none; /* nasconde l'elemento */
+    /*per farlo riapparire basta dare un valore diverso alla proprietà display.
+    Ad esempio:   display:block   oppure   display:flex   oppure display:inline
+    */
+
+}
+
 /* SEZIONE HERO */
 
 #hero {
@@ -117,6 +127,11 @@ font-size: 2rem;
     .container {
         width: 86%;
         /*margin: 0 auto non serve perché è ereditato dagli stili precedenti*/
+    }
+
+    /*MENU*/
+    .main-menu {
+        display: block; /*faccio riapparire il menu su schermi più grandi */
     }
     
     #hero {

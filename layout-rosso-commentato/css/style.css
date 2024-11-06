@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+    /*per evitare che i padding allarghino la dimensione del div */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 REGOLE BASE                                */
+/* -------------------------------------------------------------------------- */
+
+/*VARIABILI CSS*/
+:root { /*root è l'elemento base della pagina, cioè il tag HTML */
+
+    /*le variabili CSS dichiarate su :root sono GLOBALI e posso usarle ovunque sul CSS */
+
+    --main-color: #BC342B;
+    --secondary-color: #666666;
+    --body-color: #222;
+    --spacer : 1rem;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--main-color);
+}
+
+.container {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.button {
+    background-color: var(--main-color);
+    color: #fff;
+    padding:0.5rem 2rem;
+    border-radius: 50px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   HEADER                                   */
+/* -------------------------------------------------------------------------- */
+
+.logo {
+    width:3rem;
+    padding-top:1rem;
+}
+
+/*nascondo menu da mobile */
+.main-menu {
+    display: none;
+}
+
+.is-open .main-menu {
+    /*quando la header ha la classe "is-open" (assegnata dal JS al click sulla menu-icon), faccio ricomparire il menu.*/
+    display: block;
+
+    position:fixed;
+    top: 68px; /* posiziona il menu esattamente dove finisce la barra con logo e menu-icon */
+    left: 0;
+
+    background:white;
+
+    width: 100%; /*allargo al 100% perché position:fixed lo fa stringere*/
+    height: 100%;
+}
+
+.main-menu ul{
+
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+
+}
+
+.main-menu ul li {
+    margin-bottom: 2rem;
+}
+
+
+
+#menu-icon {
+    /*bottone della menu icon */
+    background-color: transparent;
+    border:none;
+}
+
+#menu-icon svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.menu-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              SEZIONI HOMEPAGE                              */
+/* -------------------------------------------------------------------------- */
+
+#hero, #servizi, #follow {
+    margin-bottom: 3rem;
+}
+
+
+#hero p {
+    margin-bottom: 2rem;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   SERVIZI                                  */
+/* -------------------------------------------------------------------------- */
+
+#servizi {
+    background-color: var(--main-color); /*richiamo la variabile impostata prima */
+    color: #fff;
+}
+
+.servizi-item {
+    text-align: center;
+    padding:2rem;
+}
+
+.servizi-image {
+    padding:2rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   FOOTER                                   */
+/* -------------------------------------------------------------------------- */
+
+#main-footer {
+    background-color: var(--body-color);
+    color: #fff;
+    padding: 3rem 0;
+}
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                          STILI PER SCHERMI GRANDI                          */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (min-width: 992px) {
+
+    .container {
+        width: 80%;
+    }
+
+    /*facciamo riapparire il menu*/
+    .main-menu {
+        display: block;
+    }
+
+
+.main-menu ul li {
+    /*annullo il margine che ho impostato per il mobile */
+    margin-bottom: 0;
+}
+
+    /*facciamo sparire l'icona mobile */
+    #menu-icon {
+        display: none;
+    }
+
+    .main-menu ul{
+
+        /*eredita alcune proprietà dal mobile */      
+        display: flex;
+        gap:2rem;
+    }
+
+
+
+    /* ---- HERO ---- */
+    
+    #hero {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .hero-wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: 4rem;
+    }
+
+ 
+
+    /*SERVIZI*/
+
+    .servizi-wrapper {
+        display: flex;
+    }
+
+    .servizi-item {
+        width:33.33%;
+ 
+    }
+
+
+    /*FOLLOW US */
+
+    .follow-wrapper {
+        display: flex;
+        align-items: center;   
+    }
+
+    .follow-text {
+        text-align: right;
+    }
+    .follow-image {
+        order:1; /*spostiamo a destra l'immagine rispetto al testo. Da mobile invece resta prima. */
+    }
+
+
+}

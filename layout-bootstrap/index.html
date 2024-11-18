@@ -89,14 +89,14 @@
     <div class="row">
 
         <!-- inizio elemento MAIN -->
-        <main id="main-content" class="col-lg-9">
+        <main id="main-content" class="col-md-10 col-lg-9">
         <h1>Lorem, ipsum dolor.</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, excepturi! Perspiciatis debitis fugit iste repudiandae eaque veniam tenetur nemo? Culpa esse assumenda praesentium similique, quibusdam debitis deserunt recusandae accusamus non saepe nesciunt quasi ab! Possimus.</p>
 
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex officiis neque, harum velit, doloribus recusandae dolores laudantium dignissimos fugit odit perferendis maiores ratione distinctio illum.</p>
 
 
-        <section id="cards">
+        <section id="cards" class="my-5">
             <h2>Lorem ipsum dolor sit.</h2>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus velit quasi, explicabo minus laudantium tenetur aliquid.</p>
 
@@ -112,14 +112,43 @@
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
+
+                      <!-- Pulsante per il modal -->
+
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#offerta">
+                        Scopri l'offerta!
+                      </button>
+
+                      
+                    </div>  
+                </div>
 
 
             </div>
-            <div class="col-md-6 col-xl-4">CARD</div>
-            <div class="col-md-12 col-xl-4">CARD</div>
+            <div class="col-md-6 col-xl-4">
+              <div class="card">
+                    
+                <img src="https://picsum.photos/600/300?random=3" class="card-img-top" alt="...">
+                
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>  
+            </div>
+
+            </div>
+            <div class="col-md-12 col-xl-4">  <div class="card">
+                    
+              <img src="https://picsum.photos/600/300?random=4" class="card-img-top" alt="...">
+              
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>  
+          </div>
+</div>
 
 
         </div>
@@ -130,8 +159,50 @@
         </main>
         <!-- fine elemento MAIN -->
 
-        <div id="sidebar" class="col-lg-3">
-            SIDEBAR
+        <div id="sidebar" class="col-md-2 col-lg-3">
+          <!-- Per la documentazione su font-size e weight:
+          https://getbootstrap.com/docs/5.3/utilities/text/ 
+          -->
+            <div class="sidebar-title fs-4 fw-bold">Titolo sidebar</div>
+            
+            <div class="sidebar-content">
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">List group 1</li>
+                <li class="list-group-item"><a href="">List group 2</a></li>
+                <li class="list-group-item">List group 3</li>
+                <li class="list-group-item">Altre voci</li>
+                <li class="list-group-item">Altre voci ancora</li>
+              </ul>
+
+              <div class="sidebar-title fs-4 fw-bold mt-5">
+                Altre info
+              </div>
+
+              <div class="sidebar-secondary-content">
+                <!-- la classe d-flex applica display: flex.
+                Vedi: https://getbootstrap.com/docs/5.3/utilities/flex/
+                posso anche aggiungere GAP. 
+                Vedi: https://getbootstrap.com/docs/5.3/utilities/spacing/#gap
+                -->
+
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+
+                  <img src="https://picsum.photos/80/80?random=6" alt="">
+                  <a href="">Cliccami!</a>
+                </div>
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <img src="https://picsum.photos/80/80?random=7" alt="">
+                  <a href="">Cliccami!</a>
+                </div>
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <img src="https://picsum.photos/80/80?random=8" alt="">
+                  <a href="">Cliccami!</a>
+                </div>
+              </div>
+            </div>
         </div>
 
     </div>
@@ -139,18 +210,54 @@
 </div>
 <!-- fine container -->
 
-<footer id="main-footer">
+<footer id="main-footer" class="bg-secondary text-white py-5">
+
+  <!-- Classi per padding e margin:
+  https://getbootstrap.com/docs/5.3/utilities/spacing/
+  -->
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">Footer left</div>
-            <div class="col-md-6">Footer right</div>
+            <div class="col-md-6 mb-3 mb-lg-0">
+              <!-- colonna da 6/12 con margin-bottom di 1rem fino allo schermo large
+              in cui azzero il margine sotto. -->
+              Nome Azienda<br>
+              P.I. 12345678901<br>
+              Via Roma 12, 10100 Torino<br>
+              <a href="" class="text-white">Privacy Policy</a>
+            </div>
+            <div class="col-md-6">
+              info@mysite.com<br>
+              +39 3333333333<br>
+              FB | IG | X
+            </div>
         </div>
     </div>
 
 </footer>
 
 
+<!-- MODAL CHE POSSO INSERIRE DOVUNQUE NELLA PAGINA. -->
+
+<!-- Modal -->
+<!-- NOTA: l'ID del modal deve corrispondere al data-bs-target del pulsante che lo attiva. -->
+<div class="modal fade" id="offerta" tabindex="-1" aria-labelledby="offerta-titolo" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="offerta-titolo">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Qui inserisco il contenuto del modal. Può essere qualunque elemento HTML: testo, immagini, elenchi, form etc.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

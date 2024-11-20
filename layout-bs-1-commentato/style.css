@@ -1,0 +1,22 @@
+body {
+    font-family: 'Lato',sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Pacifico',serif;
+}
+
+#cards {
+    background: rgb(255,216,244);
+background: linear-gradient(0deg, rgba(255,216,244,1) 0%, rgba(186,237,255,1) 100%);
+
+}
+
+.section-title {
+    border-bottom: 2px dotted #222;
+
+}
+
+textarea {
+    height: calc(100% - 24px);
+}

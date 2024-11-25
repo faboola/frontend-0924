@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="my-list">
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+    </ul>
+    
+    <style>
+        
+        /* .my-list li::marker {
+            content: ">";
+        } */
+
+        /*su SAFARI marker non funziona*/
+
+        .my-list {
+            list-style-type: none;
+        }
+
+        .my-list li::before {
+            content: "\1F4A9";
+            display: inline-block;
+            margin-right: 0.25rem;
+        }
+    </style>
+
+</body>
+</html>

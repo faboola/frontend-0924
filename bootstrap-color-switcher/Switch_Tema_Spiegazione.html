@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Spiegazione del codice - Switch Tema</title>
+</head>
+<body><div class="container">
+    
+        <h1>Spiegazione del codice che switcha il tema</h1>
+    
+        <p>Il codice che gestisce lo <strong>switch del tema</strong> (tra <strong>light</strong>, <strong>dark</strong> e <strong>auto</strong>) sfrutta JavaScript per modificare dinamicamente il tema dell'interfaccia basandosi sia sulle preferenze salvate nel <code>localStorage</code> che sul sistema operativo dell'utente. Ecco una spiegazione passo passo:</p>
+    
+        <hr>
+    
+        <h2>1. Funzioni principali</h2>
+        <h3>Gestione dello stato del tema</h3>
+        <ul>
+            <li><strong>getStoredTheme</strong>
+            <pre><code>const getStoredTheme = () => localStorage.getItem('theme');</code></pre>
+            Recupera il tema salvato dall'utente (se esiste) dal <code>localStorage</code>.
+            </li>
+    
+            <li><strong>setStoredTheme</strong>
+            <pre><code>const setStoredTheme = theme => localStorage.setItem('theme', theme);</code></pre>
+            Salva il tema scelto dall'utente nel <code>localStorage</code>.
+            </li>
+    
+            <li><strong>getPreferredTheme</strong>
+            <pre><code>
+    const getPreferredTheme = () => {
+        const storedTheme = getStoredTheme();
+        if (storedTheme) {
+            return storedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+            </code></pre>
+            Determina il tema preferito:
+            <ul>
+                <li>Se esiste un tema salvato, lo usa.</li>
+                <li>Altrimenti controlla le preferenze del sistema operativo (se il sistema preferisce un tema scuro, lo imposta su <code>dark</code>, altrimenti su <code>light</code>).</li>
+            </ul>
+            </li>
+        </ul>
+    
+        <h3>Applicazione del tema</h3>
+        <pre><code>
+    const setTheme = theme => {
+        if (theme === 'auto') {
+            document.documentElement.setAttribute(
+                'data-bs-theme',
+                window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            );
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+        }
+    };
+        </code></pre>
+        <p>Applica il tema al documento:</p>
+        <ul>
+            <li>Se il tema è <code>auto</code>, usa le preferenze di sistema (<code>dark</code> o <code>light</code>).</li>
+            <li>Altrimenti applica direttamente il tema scelto (<code>light</code> o <code>dark</code>).</li>
+        </ul>
+    
+        <hr>
+    
+        <h2>2. Gestione dell'interfaccia</h2>
+        <h3>Aggiornamento visivo dello switch</h3>
+        <pre><code>
+    const showActiveTheme = (theme, focus = false) => {
+        const themeSwitcher = document.querySelector('#bd-theme');
+        if (!themeSwitcher) {
+            return;
+        }
+    
+        const themeSwitcherText = document.querySelector('#bd-theme-text');
+        const activeThemeIcon = document.querySelector('.theme-icon-active use');
+        const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`);
+        const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href');
+    
+        document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+            element.classList.remove('active');
+            element.setAttribute('aria-pressed', 'false');
+        });
+    
+        btnToActive.classList.add('active');
+        btnToActive.setAttribute('aria-pressed', 'true');
+        activeThemeIcon.setAttribute('href', svgOfActiveBtn);
+        const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`;
+        themeSwitcher.setAttribute('aria-label', themeSwitcherLabel);
+    
+        if (focus) {
+            themeSwitcher.focus();
+        }
+    };
+        </code></pre>
+        <p>Aggiorna la grafica dello switcher del tema:</p>
+        <ul>
+            <li>Rimuove la classe <code>active</code> da tutti i bottoni e aggiunge <code>active</code> al bottone del tema attuale.</li>
+            <li>Modifica il testo e le icone attive per riflettere il tema scelto.</li>
+        </ul>
+    
+        <hr>
+    
+        <h2>3. Event listeners</h2>
+        <h3>Cambiamento delle preferenze di sistema</h3>
+        <pre><code>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        const storedTheme = getStoredTheme();
+        if (storedTheme !== 'light' && storedTheme !== 'dark') {
+            setTheme(getPreferredTheme());
+        }
+    });
+        </code></pre>
+        <p>Ascolta i cambiamenti nelle preferenze del sistema operativo:</p>
+        <ul>
+            <li>Se il tema salvato non è né <code>light</code> né <code>dark</code>, aggiorna automaticamente il tema.</li>
+        </ul>
+    
+        <h3>Clic sugli switch</h3>
+        <pre><code>
+    window.addEventListener('DOMContentLoaded', () => {
+        showActiveTheme(getPreferredTheme());
+    
+        document.querySelectorAll('[data-bs-theme-value]').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const theme = toggle.getAttribute('data-bs-theme-value');
+                setStoredTheme(theme);
+                setTheme(theme);
+                showActiveTheme(theme, true);
+            });
+        });
+    });
+        </code></pre>
+        <p>Dopo il caricamento della pagina:</p>
+        <ul>
+            <li>Mostra il tema attivo.</li>
+            <li>Aggiunge un event listener a ciascun bottone dello switch per:
+                <ul>
+                    <li>Salvare il tema scelto nel <code>localStorage</code>.</li>
+                    <li>Applicarlo al documento.</li>
+                    <li>Aggiornare graficamente lo switcher.</li>
+                </ul>
+            </li>
+        </ul>
+    
+        <hr>
+    
+        <h2>4. Elementi HTML rilevanti</h2>
+        <pre><code>
+    <div class="btn-group" role="group" aria-label="Theme switcher" id="bd-theme">
+        <button type="button" class="btn btn-secondary" data-bs-theme-value="light">Light</button>
+        <button type="button" class="btn btn-secondary" data-bs-theme-value="dark">Dark</button>
+        <button type="button" class="btn btn-secondary" data-bs-theme-value="auto">Auto</button>
+    </div>
+        </code></pre>
+        <p>Ogni bottone ha un attributo <code>data-bs-theme-value</code> che specifica il tema (<code>light</code>, <code>dark</code> o <code>auto</code>).</p>
+    
+        <hr>
+    
+        <h2>5. Come funziona in pratica</h2>
+        <ol>
+            <li>Al caricamento della pagina, il tema preferito viene recuperato (dal <code>localStorage</code> o dalle preferenze di sistema).</li>
+            <li>Il tema viene applicato al documento modificando l'attributo <code>data-bs-theme</code> su <code>&lt;html&gt;</code>.</li>
+            <li>Quando l'utente clicca un bottone dello switch, il tema viene salvato, applicato e la grafica dello switch viene aggiornata.</li>
+        </ol>
+    
+        <p>In questo modo, l'utente può personalizzare il tema, e la scelta rimane salvata tra una visita e l'altra!</p>
+</div>
+</body>
+</html>

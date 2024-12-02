@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduzione a Bootstrap</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- SOLO PER BOOTSTRAP ICONS  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script>
+      /*!
+ * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2011-2024 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ */
+
+(() => {
+  
+
+  const getStoredTheme = () => localStorage.getItem('theme')
+  const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+  const getPreferredTheme = () => {
+    const storedTheme = getStoredTheme()
+    if (storedTheme) {
+      return storedTheme
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }
+
+  const setTheme = theme => {
+    if (theme === 'auto') {
+      document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'))
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+  }
+
+  setTheme(getPreferredTheme())
+
+  const showActiveTheme = (theme, focus = false) => {
+    const themeSwitcher = document.querySelector('#bd-theme')
+
+    if (!themeSwitcher) {
+      return
+    }
+
+    const themeSwitcherText = document.querySelector('#bd-theme-text')
+    const activeThemeIcon = document.querySelector('.theme-icon-active use')
+    const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+    const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
+
+    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+      element.classList.remove('active')
+      element.setAttribute('aria-pressed', 'false')
+    })
+
+    btnToActive.classList.add('active')
+    btnToActive.setAttribute('aria-pressed', 'true')
+    activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+    themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+
+    if (focus) {
+      themeSwitcher.focus()
+    }
+  }
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const storedTheme = getStoredTheme()
+    if (storedTheme !== 'light' && storedTheme !== 'dark') {
+      setTheme(getPreferredTheme())
+    }
+  })
+
+  window.addEventListener('DOMContentLoaded', () => {
+    showActiveTheme(getPreferredTheme())
+
+    document.querySelectorAll('[data-bs-theme-value]')
+      .forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const theme = toggle.getAttribute('data-bs-theme-value')
+          setStoredTheme(theme)
+          setTheme(theme)
+          showActiveTheme(theme, true)
+        })
+      })
+  })
+})()
+    </script>  
+</head>
+<body>
+
+
+  <nav class="navbar bg-body-tertiary navbar-expand-lg fixed-top">
+    <div class="container">
+      <!-- se voglio la navbar più stretta uso .container anziché .container-fluid -->
+      <a class="navbar-brand" href="#">
+        <img src="https://placeholder.co/120x60?text=LOGO">
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+          <!-- Qua al posto dello SPAN potrei mettere un icon-font tipo bootstrap icons MA devo includere la libreria -->
+            <!-- <i class="bi bi-list"></i> -->
+      </button>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex mt-3 mt-lg-0" role="search">
+
+           <!-- qui sistemiamo il margin-top SOLO da mobile  -->
+
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <!-- NAVBAR -->
+
+
+<!-- NAVBAR CLASSICA CON APERTURA DA SOPRA -->
+
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="https://placeholder.co/120x60?text=LOGO">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Qua al posto dello SPAN potrei mettere un icon-font tipo bootstrap icons MA devo includere la libreria -->
+            <!-- <i class="bi bi-list"></i> -->
+            <span class="navbar-toggler-icon"></span>
+
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <!-- per spostare la navbar a destra basta cambiare il margin -->
+                <!-- passando da me (margin-end, cioè right) a ms (margin-start cioè left) spostiamo la navbar -->
+             
+               <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li> -->
+            </ul>
+                <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
+            <!-- <div class="socialLinks">
+                <ul class="nav">
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-instagram"></i></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-facebook"></i></a></li>
+                </ul>
+            </div> -->
+          </div>
+        </div>
+      </nav>
+
+      <!-- FINE NAVBAR -->
+
+<!-- 
+      TEMI -->
+
+      <!-- Testo indicativo per il tema attuale -->
+<div id="bd-theme-text">Tema Attuale: <span id="current-theme">Auto</span></div>
+
+<!-- Icona attiva per il tema (potresti dover sostituire l'href con il percorso corretto dell'icona) -->
+<div class="theme-icon-active" style="display: none;">
+  <svg width="24" height="24"><use href="#icon-theme"></use></svg>
+</div>
+
+<!-- Gruppo di bottoni per cambiare il tema -->
+<div class="btn-group" role="group" aria-label="Theme switcher" id="bd-theme">
+  <button type="button" class="btn btn-secondary" data-bs-theme-value="light">
+    Light
+    <svg style="display: none;"><use href="#icon-light-theme"></use></svg>
+  </button>
+  <button type="button" class="btn btn-secondary" data-bs-theme-value="dark">
+    Dark
+    <svg style="display: none;"><use href="#icon-dark-theme"></use></svg>
+  </button>
+  <button type="button" class="btn btn-secondary" data-bs-theme-value="auto">
+    Auto
+    <svg style="display: none;"><use href="#icon-auto-theme"></use></svg>
+  </button>
+</div>
+
+
+<!-- FINE TEMI -->
+
+    <div class="container">
+        <h1>Introduzione a Bootstrap</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore, enim cum ut atque dicta magnam ad error corporis voluptate autem voluptas, laudantium illo voluptatum quod harum, quia eos dignissimos quam excepturi. Minus, porro facere cupiditate dolorem labore molestiae sed?</p>
+    </div>
+
+    <div class="container">    
+        
+            
+              <h2>La griglia!</h2>
+         
+
+            <h3>Colonne di grandezza uguale</h3>
+
+            <div class="row">
+                <div class="col">Colonna 1</div>
+                <div class="col">Colonna 2</div>
+                <div class="col">Colonna 3</div>
+            </div>
+
+            <hr>
+
+            <h3>Colonne di larghezza definita</h3>
+
+            <div class="row">
+                <div class="col-4">Colonna da 4</div>
+                <div class="col-8">Colonna da 8</div>
+                <div class="col-6">Colonna da 6</div>
+                <div class="col-6">Colonna da 6</div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">Colonna da 3</div>
+                <div class="col">Colonna di larghezza auto</div>
+                <div class="col-3">Colonna da 3</div>
+            </div>
+
+            <h3>Colonne responsive</h3>
+
+            <div class="row">
+                
+                <!-- Potrei scrivere col-12 col-lg-3 etc ma il col-12 viene inserito di default.
+                Bootstrap considera 100% tutte le colonne al di sotto del primo breakpoint dichiarato 
+                 -->
+
+                <div class="col-md-2 col-lg-3">Colonna 1</div>
+                <div class="col-md-8 col-lg-6">Colonna 2</div>
+                <div class="col-md-2 col-lg-3">Colonna 3</div>
+
+            </div>
+
+
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <h2>Esempio di griglia nidificata</h2>
+
+        <div class="row">
+            <div class="col-lg-4"><h3>SIDEBAR</h3></div>
+            <div class="col-lg-8">
+
+                <h3>MAIN CONTENT</h3>
+
+                <div class="row">
+                    <div class="col-lg-4">COL</div>
+                    <div class="col-lg-4">COL</div>
+                    <div class="col-lg-4">COL</div>
+                    <div class="col-lg-4">COL</div>
+                    <div class="col-lg-4">COL</div>
+                    <div class="col-lg-4">COL</div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Elementi base interfaccia</h2>
+
+        <a href="" class="btn btn-primary">Button!</a>
+        
+    </div>
+
+
+    <div class="container" >
+
+    
+        <h2>Cards</h2>
+        <!-- INIZIO CARD -->
+
+        <div class="row">
+            
+            <div class="col-lg-4">
+                <div class="card">
+                    <img src="https://source.unsplash.com/600x400?cat" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <div class="card-title fs-5">Card title</div>
+                      <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt, officiis atque nemo molestiae ducimus ab dignissimos consequatur cumque fugiat enim voluptates provident excepturi sit.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+          
+                    </div>
+                  </div>
+                  <!-- FINE CARD -->
+            </div>
+
+
+
+               <div class="col-lg-4">
+                   <!-- INIZIO CARD -->
+                <div class="card">
+                    <img src="https://source.unsplash.com/600x400?cat" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="card-title fs-5">Card title</div>
+                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt, officiis atque nemo molestiae ducimus ab dignissimos consequatur cumque fugiat enim voluptates provident excepturi sit.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+                
+               </div>
+               <div class="col-lg-4">
+
+                   <!-- INIZIO CARD -->
+                   <div class="card">
+                    <img src="https://source.unsplash.com/600x400?cat" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="card-title fs-5">Card title</div>
+                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt, officiis atque nemo molestiae ducimus ab dignissimos consequatur cumque fugiat enim voluptates provident excepturi sit.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+               </div>
+
+              <!-- FINE CARD -->
+        </div>
+
+
+    </div>
+<div class="container">
+    
+        <h2>Finestre MODAL</h2>
+    
+        <p>Finestre che si aprono in sovrapposizione al body della pagina</p>
+    
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+      </button>
+    
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             Hey, sono un MODAL! E sono aperto.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</div>
+
+<div class="container">
+    <h2>
+        FORM
+    </h2>
+
+    <form action="">
+        <label class="form-label" for="nome">Scrivi il tuo nome</label>
+        <input class="form-control" type="text" name="nome" id="nome">
+    </form>
+
+</div>
+
+<div class="container">
+  <h2>Classi FLEX</h2>
+
+  <div class="d-flex flex-column flex-lg-row justify-content-lg-between">
+    <!-- con questa classe imposto display:flex sul div. Poi con flex-column inverto l'asse di flexbox 
+    e una volta che arrivo al breakpoint lg torno a lavorare sull'asse di default (flex-row).
+    La classe justify... gestisce l'allineamento sull'asse principale -->
+    <div>ELEMENTO 1</div>
+    <div>ELEMENTO 2</div>
+    <div>ELEMENTO 3</div>
+  </div>
+
+</div>
+
+<!-- TEMI -->
+<div class="btn-group" role="group" aria-label="Theme switcher" id="bd-theme">
+  <button type="button" class="btn btn-secondary" data-bs-theme-value="light">Light</button>
+  <button type="button" class="btn btn-secondary" data-bs-theme-value="dark">Dark</button>
+  <button type="button" class="btn btn-secondary" data-bs-theme-value="auto">Auto</button>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+   
+</body>
+</html>

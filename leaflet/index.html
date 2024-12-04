@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esempio Leaflet</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+</head>
+<body>
+<!-- 
+    1. Includo CSS di Leaflet
+    2. Includo JS di leaflet (vedi sotto)
+    3. Creo un elemento sulla pagina in cui costruire la MAPPA
+    4. Inizializzo la mappa (vedi codice sotto)
+
+    Quick start: https://leafletjs.com/examples/quick-start/ -->
+
+
+<div class="container" style="max-width:80%; margin:0 auto;">
+    
+        <!-- CREO UN DIV PER LA MAPPA (deve avere un'altezza definita!)-->
+         <h1>Mappa Open Street Map</h1>
+        <div id="map-osm" style="height:600px"></div>
+    
+        <h2>Mappa Google Maps</h2>
+        <div id="map-gmaps" style="height:600px"></div>
+</div>
+
+
+    <!-- Libreria JS di Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <script>
+
+        //set view: latitudine, longitudine, zoom 
+        var map = L.map('map-osm').setView([45.066010, 7.684252], 18);
+
+        //qui vado a pescare dai server di openstreetmap i mattoncini della cartina
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        //aggiungo un marker sulle stesse coordinate
+        var marker = L.marker([45.066010, 7.684252]).addTo(map);
+
+        //posso aggiungere un popup al marker appena creato
+        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+        //per approfondire: https://leafletjs.com/examples.html
+
+
+    </script>
+
+    <script>
+        //GOOGLE MAPS
+        // Inizializza la mappa con Leaflet
+        var gMap = L.map('map-gmaps').setView([45.066010, 7.684252], 20);
+    
+        // Aggiungi Google Maps come tile layer
+        var googleMapsLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], // Richieste ai server di Google
+            attribution: '&copy; <a href="https://maps.google.com">Google Maps</a>'
+        }).addTo(gMap);
+    
+        // Aggiungi un marker
+        var gMarker = L.marker([45.066010, 7.684252]).addTo(gMap);
+        gMarker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+    </script> 
+</body>
+</html>
